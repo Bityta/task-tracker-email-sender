@@ -21,7 +21,6 @@ public class MessageController {
     @PostMapping("/greetings")
     public ResponseEntity<String> sendGreetingsMessage(@RequestBody String email) {
         this.rabbitMQPublisherService.sendGreetingsMessage(email);
-
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body("Message sent to RabbitMQ...");
