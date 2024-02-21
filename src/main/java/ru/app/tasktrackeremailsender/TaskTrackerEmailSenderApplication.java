@@ -10,4 +10,11 @@ public class TaskTrackerEmailSenderApplication {
         SpringApplication.run(TaskTrackerEmailSenderApplication.class, args);
     }
 
+    //создаем рабочий проект по rabbitMQ + упаковываем в контейнер и подключаем к backend,
+    //по госту все оформляем
+
+    //логирование
+    //тесты + документация + swagger
+
+
 }
