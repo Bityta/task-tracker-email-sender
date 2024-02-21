@@ -25,30 +25,18 @@ public class RabbitMQConfig {
 
     @Bean
     public Queue queue() {
-        return new Queue(queueName);
+        return new Queue(this.queueName);
     }
 
     @Bean
     public TopicExchange exchange() {
-        return new TopicExchange(exchangeName);
+        return new TopicExchange(this.exchangeName);
     }
 
     @Bean
-    public Binding jsonBinding() {
+    public Binding Binding() {
         return BindingBuilder.bind(this.queue())
                 .to(this.exchange())
-                .with(keyName);
-    }
-
-    @Bean
-    public MessageConverter converter() {
-        return new Jackson2JsonMessageConverter();
-    }
-
-    @Bean
-    public AmqpTemplate amqpTemplate(ConnectionFactory connectionFactory) {
-        RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
-        rabbitTemplate.setMessageConverter(converter());
-        return rabbitTemplate;
+                .with(this.keyName);
     }
 }
