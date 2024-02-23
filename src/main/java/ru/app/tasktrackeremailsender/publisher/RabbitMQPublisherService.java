@@ -13,10 +13,10 @@ public class RabbitMQPublisherService {
 
     private static final Logger logger = LoggerFactory.getLogger(RabbitMQPublisherService.class);
 
-    @Value("${rabbitmq.exchange.name}")
+    @Value("${rabbitmq.exchange}")
     private String exchange;
 
-    @Value("${rabbitmq.key.name}")
+    @Value("${rabbitmq.key}")
     private String key;
 
 
