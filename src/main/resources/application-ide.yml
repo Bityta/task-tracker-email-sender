@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: task-tracker-email-sender
+
+  rabbitmq:
+    host: localhost
+    port: 5673
+    stream:
+      username: guest
+      password: guest
+
+
+server:
+  port: 8081
+
+rabbitmq:
+  key: key
+  queue: EMAIL_SENDING_TASKS
+  exchange: exchange
+
