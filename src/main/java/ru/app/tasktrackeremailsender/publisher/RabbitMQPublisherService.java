@@ -12,17 +12,13 @@ import org.springframework.stereotype.Service;
 public class RabbitMQPublisherService {
 
     private static final Logger logger = LoggerFactory.getLogger(RabbitMQPublisherService.class);
-
+    private final RabbitTemplate rabbitTemplate;
     @Value("${rabbitmq.exchange}")
     private String exchange;
-
     @Value("${rabbitmq.key}")
     private String key;
 
-
-    private final RabbitTemplate rabbitTemplate;
-
-    public void sendGreetingsMessage(String email){
+    public void sendGreetingsMessage(String email) {
         logger.info(String.format("Message sent -> %s", email));
         this.rabbitTemplate.convertAndSend(exchange, key, email);
     }
