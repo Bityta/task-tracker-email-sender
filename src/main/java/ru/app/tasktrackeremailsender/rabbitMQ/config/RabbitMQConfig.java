@@ -1,4 +1,4 @@
-package ru.app.tasktrackeremailsender.config;
+package ru.app.tasktrackeremailsender.rabbitMQ.config;
 
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
