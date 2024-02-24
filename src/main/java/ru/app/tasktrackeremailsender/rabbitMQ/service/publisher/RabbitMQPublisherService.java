@@ -13,15 +13,14 @@ import ru.app.tasktrackeremailsender.email.service.EmailService;
 public class RabbitMQPublisherService {
 
     private static final Logger logger = LoggerFactory.getLogger(RabbitMQPublisherService.class);
+    private static final String GREETINGS_HEADER = "Greetings from Task-tracker-email-sender";
+    private static final String GREETINGS_BODY = "Thank you for registering";
     private final RabbitTemplate rabbitTemplate;
     private final EmailService emailService;
     @Value("${rabbitmq.exchange}")
     private String exchange;
     @Value("${rabbitmq.key}")
     private String key;
-    private static final String GREETINGS_HEADER = "Greetings from Task-tracker-email-sender";
-    private static final String GREETINGS_BODY = "Thank you for registering";
-
 
     public void sendGreetingsMessage(String email) {
         logger.info(String.format("Message sent -> %s", email));
