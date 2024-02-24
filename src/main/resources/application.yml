@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: task-tracker-email-sender
+
+  profiles:
+    active: ide
+
+server:
+  port: 8081
+
+rabbitmq:
+  key: key
+  queue: EMAIL_SENDING_TASKS
+  exchange: exchange
+
