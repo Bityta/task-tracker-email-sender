@@ -1,13 +1,7 @@
 spring:
-  application:
-    name: task-tracker-email-sender
-
-  rabbitmq:
-    host: localhost
-    port: 5673
-    stream:
-      username: guest
-      password: guest
+  config:
+    activate:
+      on-profile: ide
 
   mail:
     host: smtp.gmail.com
@@ -19,12 +13,13 @@ spring:
       starttls.enable: true
       ssl.trust: smtp.gmail.com
 
+  rabbitmq:
+    host: localhost
+    port: 5672
 
-server:
-  port: 8081
 
-rabbitmq:
-  key: key
-  queue: EMAIL_SENDING_TASKS
-  exchange: exchange
+
+
+
+
 
