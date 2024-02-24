@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class RabbitMQConsumerService {
 
-    private static final Logger logger = LoggerFactory.getLogger(RabbitMQConsumerService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(RabbitMQConsumerService.class);
 
     @RabbitListener(queues = {"${rabbitmq.queue}"})
     public void consume(String email) {
-        logger.info(String.format("Received message -> %s", email));
+        LOGGER.info(String.format("Received message -> %s", email));
     }
 
 }

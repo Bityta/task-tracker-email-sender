@@ -1,5 +1,6 @@
 package ru.app.tasktrackeremailsender.rabbitMQ.exceptionHandler;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import jakarta.mail.SendFailedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +14,7 @@ import ru.app.tasktrackeremailsender.rabbitMQ.controller.MessageController;
 import java.util.Map;
 
 @RestControllerAdvice(assignableTypes = MessageController.class)
-//@Hidden()
+@Hidden()
 public class MessageExceptionHandler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MessageExceptionHandler.class);
@@ -21,7 +22,7 @@ public class MessageExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(SendFailedException.class)
     public Map<String, String> handleSendFailedException(SendFailedException ex) {
-        LOGGER.error("User registration error. {}", ex.getMessage());
+        LOGGER.error("An error occurred while sending greetings message. {}", ex.getMessage());
         ErrorMessageDtoView errors = ErrorMessageDtoView.builder()
                 .status(HttpStatus.BAD_REQUEST)
                 .error(ex.getMessage())
