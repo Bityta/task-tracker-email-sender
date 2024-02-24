@@ -1,4 +1,4 @@
-package ru.app.tasktrackeremailsender.controller;
+package ru.app.tasktrackeremailsender.rabbitMQ.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.app.tasktrackeremailsender.publisher.RabbitMQPublisherService;
+import ru.app.tasktrackeremailsender.rabbitMQ.service.publisher.RabbitMQPublisherService;
 
 
 @RestController
@@ -23,6 +23,6 @@ public class MessageController {
         this.rabbitMQPublisherService.sendGreetingsMessage(email);
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body("Message sent to RabbitMQ...");
+                .build();
     }
 }
