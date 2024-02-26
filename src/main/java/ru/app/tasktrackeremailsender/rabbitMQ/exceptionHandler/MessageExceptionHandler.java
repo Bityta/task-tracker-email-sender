@@ -19,6 +19,12 @@ public class MessageExceptionHandler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MessageExceptionHandler.class);
 
+    /**
+     * Exception handler for handling SendFailedException.
+     *
+     * @param ex The SendFailedException that occurred.
+     * @return Map containing error details.
+     */
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(SendFailedException.class)
     public Map<String, String> handleSendFailedException(SendFailedException ex) {
@@ -29,8 +35,6 @@ public class MessageExceptionHandler {
                 .path("/")
                 .build();
 
-
         return errors.getError();
     }
-
 }

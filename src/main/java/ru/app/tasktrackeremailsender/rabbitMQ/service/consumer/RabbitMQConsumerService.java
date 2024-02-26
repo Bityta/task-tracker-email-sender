@@ -7,6 +7,9 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
 import ru.app.tasktrackeremailsender.email.service.EmailService;
 
+/**
+ * Service class for consuming messages from RabbitMQ.
+ */
 @Service
 @RequiredArgsConstructor
 public class RabbitMQConsumerService {
@@ -17,6 +20,11 @@ public class RabbitMQConsumerService {
 
     private final EmailService emailService;
 
+    /**
+     * RabbitMQ message listener method.
+     *
+     * @param email The email address received from the message queue.
+     */
     @RabbitListener(queues = {"${rabbitmq.queue}"})
     public void consume(String email) {
         this.emailService.sendMessage(email, GREETINGS_HEADER, GREETINGS_BODY);

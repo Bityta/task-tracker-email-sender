@@ -14,9 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.app.tasktrackeremailsender.rabbitMQ.model.dto.email.EmailDto;
+import ru.app.tasktrackeremailsender.email.model.dto.email.EmailDto;
 import ru.app.tasktrackeremailsender.rabbitMQ.service.publisher.RabbitMQPublisherService;
-
 
 @RestController
 @RequiredArgsConstructor
@@ -27,6 +26,12 @@ public class MessageController {
     private static final Logger LOGGER = LoggerFactory.getLogger(MessageController.class);
     private final RabbitMQPublisherService rabbitMQPublisherService;
 
+    /**
+     * Endpoint for sending greetings message.
+     *
+     * @param emailDto The email to which the greetings message will be sent.
+     * @return ResponseEntity indicating the status of the operation.
+     */
     @Operation(
             description = "Sending greetings message",
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
@@ -39,26 +44,21 @@ public class MessageController {
                                                                 "email": "example@gmail.com"
                                                             }
                                                     """
-
                                     )
                             }
-
                     )
-
             ),
             responses = {
                     @ApiResponse(
                             responseCode = "200",
                             description = "Successful sending of greetings message",
                             content = @Content(
-
                             )
                     ),
                     @ApiResponse(
                             responseCode = "400",
                             description = "Invalid request",
                             content = @Content(
-
                             )
                     )
             }
