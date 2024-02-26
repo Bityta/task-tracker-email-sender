@@ -6,6 +6,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
 import ru.app.tasktrackeremailsender.email.service.EmailService;
+import ru.app.tasktrackeremailsender.rabbitMQ.model.dto.EmailAnalyticsDto;
+import ru.app.tasktrackeremailsender.rabbitMQ.model.dto.EmailGreetingsDto;
 
 /**
  * Service class for consuming messages from RabbitMQ.
@@ -21,14 +23,24 @@ public class RabbitMQConsumerService {
     private final EmailService emailService;
 
     /**
-     * RabbitMQ message listener method.
+     * Listens for greetings messages from RabbitMQ and sends them via email.
      *
-     * @param email The email address received from the message queue.
+     * @param emailGreetingsDto The greetings message received from RabbitMQ.
      */
-    @RabbitListener(queues = {"${rabbitmq.queue}"})
-    public void consume(String email) {
-        this.emailService.sendMessage(email, GREETINGS_HEADER, GREETINGS_BODY);
-        LOGGER.info(String.format("Received message -> %s", email));
+    @RabbitListener(queues = {"${rabbitmq.queue.greetings}"})
+    public void consumeGreetings(EmailGreetingsDto emailGreetingsDto) {
+        this.emailService.sendMessage(emailGreetingsDto.getEmail(), GREETINGS_HEADER, GREETINGS_BODY);
+        LOGGER.info(String.format("Received message -> %s", emailGreetingsDto.getEmail()));
     }
 
+    /**
+     * Listens for analytics messages from RabbitMQ and sends them via email.
+     *
+     * @param emailAnalyticsDto The analytics message received from RabbitMQ.
+     */
+    @RabbitListener(queues = {"${rabbitmq.queue.analytics}"})
+    public void consumeAnalytics(EmailAnalyticsDto emailAnalyticsDto) {
+        this.emailService.sendMessage(emailAnalyticsDto.getEmail(), emailAnalyticsDto.getHeader(), emailAnalyticsDto.getBody());
+        LOGGER.info(String.format("Received message -> %s", emailAnalyticsDto.getEmail()));
+    }
 }
