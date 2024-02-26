@@ -1,6 +1,5 @@
 package ru.app.tasktrackeremailsender.exception.model.dto;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -11,7 +10,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-
+/**
+ * DTO class representing an error message.
+ */
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -23,6 +24,11 @@ public class ErrorMessageDtoView {
     private String path;
     private String timestamp;
 
+    /**
+     * Generates a map containing the error details.
+     *
+     * @return A map containing the error details.
+     */
     public Map<String, String> getError() {
         Map<String, String> errors = new HashMap<>();
 

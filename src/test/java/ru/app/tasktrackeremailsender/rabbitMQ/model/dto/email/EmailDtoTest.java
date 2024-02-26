@@ -1,6 +1,7 @@
 package ru.app.tasktrackeremailsender.rabbitMQ.model.dto.email;
 
 import org.junit.jupiter.api.Test;
+import ru.app.tasktrackeremailsender.email.model.dto.email.EmailDto;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
