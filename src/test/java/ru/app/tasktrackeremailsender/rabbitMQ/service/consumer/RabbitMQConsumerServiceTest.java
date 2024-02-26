@@ -24,8 +24,8 @@ public class RabbitMQConsumerServiceTest {
     @Test
     public void testConsumeGreetings() {
         var emailGreetingsDto = EmailGreetingsDto.builder()
-                        .email("test@gmail.com")
-                                .build();
+                .email("test@gmail.com")
+                .build();
 
         Mockito.doNothing().when(emailService).sendMessage(
                 Mockito.anyString(),
