@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import ru.app.tasktrackeremailsender.rabbitMQ.model.dto.EmailAnalyticsDto;
+import ru.app.tasktrackeremailsender.rabbitMQ.model.dto.EmailGreetingsDto;
 
 /**
  * Service class for publishing messages to RabbitMQ.
@@ -14,18 +16,30 @@ public class RabbitMQPublisherService {
 
     private final RabbitTemplate rabbitTemplate;
 
-    @Value("${rabbitmq.exchange}")
-    private String exchange;
+    @Value("${rabbitmq.key.greetings}")
+    private String routingKeyGreetings;
 
-    @Value("${rabbitmq.key}")
-    private String key;
+    @Value("${rabbitmq.key.analytics}")
+    private String routingKeyAnalytics;
+
+    @Value("${rabbitmq.exchange}")
+    private String exchangeName;
 
     /**
-     * Method to send a greetings message to RabbitMQ.
+     * Sends a greetings message to RabbitMQ.
      *
-     * @param email The email address to send the greetings message to.
+     * @param emailGreetingsDto The greetings message to send.
      */
-    public void sendGreetingsMessage(String email) {
-        this.rabbitTemplate.convertAndSend(exchange, key, email);
+    public void sendGreetingsMessage(EmailGreetingsDto emailGreetingsDto) {
+        this.rabbitTemplate.convertAndSend(exchangeName, routingKeyGreetings, emailGreetingsDto);
+    }
+
+    /**
+     * Sends an analytics message to RabbitMQ.
+     *
+     * @param emailAnalyticsDto The analytics message to send.
+     */
+    public void sendAnalyticsMessage(EmailAnalyticsDto emailAnalyticsDto) {
+        this.rabbitTemplate.convertAndSend(exchangeName, routingKeyAnalytics, emailAnalyticsDto);
     }
 }
