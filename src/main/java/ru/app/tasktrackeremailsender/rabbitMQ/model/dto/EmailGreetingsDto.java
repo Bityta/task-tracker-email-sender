@@ -1,4 +1,4 @@
-package ru.app.tasktrackeremailsender.email.model.dto.email;
+package ru.app.tasktrackeremailsender.rabbitMQ.model.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
@@ -11,8 +11,8 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Schema(name = "Email", description = "Information about email")
-public class EmailDto {
+@Schema(name = "EmailGreetingsDto", description = "Information about email")
+public class EmailGreetingsDto {
     /**
      * The email address.
      */
