@@ -9,7 +9,20 @@ server:
   port: 8081
 
 rabbitmq:
-  key: key
-  queue: EMAIL_SENDING_TASKS
+  key:
+    greetings: KEY1
+    analytics: KEY2
+  queue:
+    greetings: EMAIL_GREEATINGS_TASKS
+    analytics: EMAIL_ANALITICS_TASKS
   exchange: exchange
 
+
+logging:
+  file:
+    path: ./src/main/resources/logs
+    name: ${logging.file.path}/task-tracker-email-sender.log
+  logback:
+    rollingpolicy:
+      max-file-size: 1000000
+      clean-history-on-start: true
