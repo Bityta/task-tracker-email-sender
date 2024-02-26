@@ -1,4 +1,4 @@
-package ru.app.tasktrackeremailsender.rabbitMQ.model.dto.email;
+package ru.app.tasktrackeremailsender.rabbitMQ.model.dto;
 
 import org.junit.jupiter.api.Test;
 import ru.app.tasktrackeremailsender.rabbitMQ.model.dto.EmailGreetingsDto;
@@ -22,5 +22,31 @@ public class EmailGreetingsDtoTest {
                 .build();
         emailGreetingsDto.setEmail(email);
         assertEquals(email, emailGreetingsDto.getEmail());
+    }
+
+    @Test
+    public void testGetEmail() {
+        // Given
+        String email = "test@example.com";
+        EmailGreetingsDto dto = new EmailGreetingsDto(email);
+
+        // When
+        String retrievedEmail = dto.getEmail();
+
+        // Then
+        assertEquals(email, retrievedEmail);
+    }
+
+    @Test
+    public void testSetEmail() {
+        // Given
+        String email = "test@example.com";
+        EmailGreetingsDto dto = new EmailGreetingsDto();
+
+        // When
+        dto.setEmail(email);
+
+        // Then
+        assertEquals(email, dto.getEmail());
     }
 }
