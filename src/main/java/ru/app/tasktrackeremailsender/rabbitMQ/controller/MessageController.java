@@ -69,7 +69,7 @@ public class MessageController {
             }
     )
     @PostMapping("/greetings")
-    public ResponseEntity<String> sendGreetingsMessage(@RequestBody @Valid EmailGreetingsDto emailGreetingsDto) {
+    public ResponseEntity<String> sendGreetingsMessage(@Valid @RequestBody EmailGreetingsDto emailGreetingsDto) {
         LOGGER.info("Received request to send a greetings message {} ", emailGreetingsDto.getEmail());
         this.rabbitMQPublisherService.sendGreetingsMessage(emailGreetingsDto);
         LOGGER.info("Greetings message sent successfully {} ", emailGreetingsDto.getEmail());
@@ -116,7 +116,7 @@ public class MessageController {
             }
     )
     @PostMapping("/analytics")
-    public ResponseEntity<String> sendAnalytics(@RequestBody @Valid EmailAnalyticsDto emailAnalyticsDto) {
+    public ResponseEntity<String> sendAnalytics(@Valid @RequestBody EmailAnalyticsDto emailAnalyticsDto) {
         LOGGER.info("Received request to send an email message {} ", emailAnalyticsDto.getEmail());
         this.rabbitMQPublisherService.sendAnalyticsMessage(emailAnalyticsDto);
         LOGGER.info("Email message sent successfully {} ", emailAnalyticsDto.getEmail());

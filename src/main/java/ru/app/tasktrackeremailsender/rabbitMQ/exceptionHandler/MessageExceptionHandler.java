@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestControllerAdvice(assignableTypes = MessageController.class)
-@Hidden()
+@Hidden
 public class MessageExceptionHandler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MessageExceptionHandler.class);
