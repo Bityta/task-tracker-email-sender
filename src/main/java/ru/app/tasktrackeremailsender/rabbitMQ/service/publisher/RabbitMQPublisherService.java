@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import ru.app.tasktrackeremailsender.rabbitMQ.model.dto.EmailAnalyticsDto;
+import ru.app.tasktrackeremailsender.rabbitMQ.model.dto.EmailDto;
 import ru.app.tasktrackeremailsender.rabbitMQ.model.dto.EmailGreetingsDto;
 
 /**
@@ -37,9 +37,9 @@ public class RabbitMQPublisherService {
     /**
      * Sends an analytics message to RabbitMQ.
      *
-     * @param emailAnalyticsDto The analytics message to send.
+     * @param emailDto The message to send.
      */
-    public void sendAnalyticsMessage(EmailAnalyticsDto emailAnalyticsDto) {
-        this.rabbitTemplate.convertAndSend(exchangeName, routingKeyAnalytics, emailAnalyticsDto);
+    public void sendAnalyticsMessage(EmailDto emailDto) {
+        this.rabbitTemplate.convertAndSend(exchangeName, routingKeyAnalytics, emailDto);
     }
 }
