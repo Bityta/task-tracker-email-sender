@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
 import ru.app.tasktrackeremailsender.email.service.EmailService;
-import ru.app.tasktrackeremailsender.rabbitMQ.model.dto.EmailAnalyticsDto;
+import ru.app.tasktrackeremailsender.rabbitMQ.model.dto.EmailDto;
 import ru.app.tasktrackeremailsender.rabbitMQ.model.dto.EmailGreetingsDto;
 
 /**
@@ -36,11 +36,11 @@ public class RabbitMQConsumerService {
     /**
      * Listens for analytics messages from RabbitMQ and sends them via email.
      *
-     * @param emailAnalyticsDto The analytics message received from RabbitMQ.
+     * @param emailDto The message received from RabbitMQ.
      */
     @RabbitListener(queues = {"${rabbitmq.queue.analytics}"})
-    public void consumeAnalytics(EmailAnalyticsDto emailAnalyticsDto) {
-        this.emailService.sendMessage(emailAnalyticsDto.getEmail(), emailAnalyticsDto.getHeader(), emailAnalyticsDto.getBody());
-        LOGGER.info(String.format("Received message -> %s", emailAnalyticsDto.getEmail()));
+    public void consumeAnalytics(EmailDto emailDto) {
+        this.emailService.sendMessage(emailDto.getEmail(), emailDto.getHeader(), emailDto.getBody());
+        LOGGER.info(String.format("Received message -> %s", emailDto.getEmail()));
     }
 }

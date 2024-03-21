@@ -7,15 +7,15 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 
 /**
- * Data transfer object representing email analytics information.
+ * Data transfer object representing email information.
  */
 @Builder
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Schema(name = "EmailAnalyticsDto", description = "Information about email analytics")
-public class EmailAnalyticsDto {
+@Schema(name = "EmailDto", description = "Information about the sent  email")
+public class EmailDto {
 
     /**
      * The email address.

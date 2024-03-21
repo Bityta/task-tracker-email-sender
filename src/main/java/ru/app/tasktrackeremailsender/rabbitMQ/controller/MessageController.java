@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.app.tasktrackeremailsender.rabbitMQ.model.dto.EmailAnalyticsDto;
+import ru.app.tasktrackeremailsender.rabbitMQ.model.dto.EmailDto;
 import ru.app.tasktrackeremailsender.rabbitMQ.model.dto.EmailGreetingsDto;
 import ru.app.tasktrackeremailsender.rabbitMQ.service.publisher.RabbitMQPublisherService;
 
@@ -81,7 +81,7 @@ public class MessageController {
     /**
      * Endpoint for sending an analytics message.
      *
-     * @param emailAnalyticsDto The email analytics data to be sent.
+     * @param EmailDto The email data to be sent.
      * @return ResponseEntity indicating the status of the operation.
      */
     @Operation(
@@ -94,8 +94,8 @@ public class MessageController {
                                             value = """
                                                             {
                                                                 "email": "example@gmail.com",
-                                                                "header": "test",
-                                                                "body": "test"
+                                                                "header": "test header",
+                                                                "body": "test body"
                                                             }
                                                     """
                                     )
@@ -115,11 +115,11 @@ public class MessageController {
                     )
             }
     )
-    @PostMapping("/analytics")
-    public ResponseEntity<String> sendAnalytics(@Valid @RequestBody EmailAnalyticsDto emailAnalyticsDto) {
-        LOGGER.info("Received request to send an email message {} ", emailAnalyticsDto.getEmail());
-        this.rabbitMQPublisherService.sendAnalyticsMessage(emailAnalyticsDto);
-        LOGGER.info("Email message sent successfully {} ", emailAnalyticsDto.getEmail());
+    @PostMapping()
+    public ResponseEntity<String> sendMessage(@Valid @RequestBody EmailDto EmailDto) {
+        LOGGER.info("Received request to send an email message {} ", EmailDto.getEmail());
+        this.rabbitMQPublisherService.sendAnalyticsMessage(EmailDto);
+        LOGGER.info("Email message sent successfully {} ", EmailDto.getEmail());
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .build();
