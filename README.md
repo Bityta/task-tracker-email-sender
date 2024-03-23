@@ -56,19 +56,10 @@ Here's an example configuration:
 
 ```yaml
 spring:
-  config:
-    activate:
-      on-profile: prod
-
   mail:
-    host: smtp.gmail.com
-    port: 587
     username: your-mail
     password: your-password
-    properties.mail.smtp:
-      auth: true
-      starttls.enable: true
-      ssl.trust: smtp.gmail.com
+  
 ```
 
 Replace your-mail and your-password with the actual  mail and password
