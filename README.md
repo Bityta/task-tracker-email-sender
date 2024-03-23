@@ -1,5 +1,7 @@
 # Task Tracker Email Sender
 
+## Overview
+
 Task Tracker Email Sender is a Spring Boot application responsible for sending emails by processing messages received from other services via RabbitMQ.
 It is configured to run with different profiles depending on the environment: `ide` for local development and `prod` for production.
 
