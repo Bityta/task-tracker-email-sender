@@ -7,6 +7,8 @@ It is configured to run with different profiles depending on the environment: `i
 
 The main goal of the Task Tracker Email Sender service is to automate the process of sending email notifications to users based on data received from other services. This service aims to efficiently inform users about various events and changes in the system, such as task completions, upcoming reminders, and providing them with relevant information for task and process management. This enhances the usability of the system and ensures timely notification of users, thereby increasing their satisfaction and productivity.
 
+Additional project details can be found in the Task Tracker Info.  Please refer to it [here](https://github.com/Bityta/task-tracker-info).
+
 
 ## Description
 
