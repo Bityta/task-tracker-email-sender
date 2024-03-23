@@ -37,6 +37,14 @@ Once the container is up and running, the application will be accessible at `htt
 
 - **prod**: This profile is used for production deployment. It runs on port `8081`. You will need to provide the mail and password to work sending messages. Also specify a number of RabbitMQ settings
 
+To select a profile, go to application.yml and change the spring:
+```yaml
+application:
+    profiles:
+      active: your-profile
+  ```
+Replace your-profile with an ide or prod
+
 Here's an example configuration:
 
 ```yaml
