@@ -3,19 +3,30 @@ spring:
     activate:
       on-profile: ide
 
+  rabbitmq:
+    host: localhost
+    port: 5672
+
   mail:
     host: smtp.gmail.com
     port: 587
-    username: task.tracker.email.sender@gmail.com
-    password: csxhhpurugycqfaq
+    username:
+    password:
     properties.mail.smtp:
       auth: true
       starttls.enable: true
       ssl.trust: smtp.gmail.com
 
-  rabbitmq:
-    host: localhost
-    port: 5672
+
+rabbitmq:
+  key:
+    greetings: KEY1
+    analytics: KEY2
+  queue:
+    greetings: EMAIL_GREETING_TASKS
+    analytics: EMAIL_ANALYTICS_TASKS
+  exchange: exchange
+
 
 server:
   port: 8081
