@@ -1,0 +1,18 @@
+version: "3.1"
+services:
+
+  task-tracker-email-sender:
+    container_name: "task-tracker-email-sender"
+    image: task-tracker-email-sender:0.0.1
+    networks:
+      - task-tracker-service-discovery_task-tracker-network
+    build:
+      context: ../task-tracker-email-sender/
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "8081:8081"
+
+networks:
+  task-tracker-service-discovery_task-tracker-network:
+    external: true

@@ -3,19 +3,7 @@ spring:
     name: task-tracker-email-sender
 
   profiles:
-    active: ide
-
-
-
-rabbitmq:
-  key:
-    greetings: KEY1
-    analytics: KEY2
-  queue:
-    greetings: EMAIL_GREEATINGS_TASKS
-    analytics: EMAIL_ANALITICS_TASKS
-  exchange: exchange
-
+    active: prod
 
 logging:
   file:
