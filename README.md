@@ -35,7 +35,8 @@ Once the container is up and running, the application will be accessible at `htt
 
 - **ide**: This profile is used for local development. It is configured to run on port `8081`. The basic settings for rabbitmq have already been set. You will need to provide the mail and password to work sending messages.
 
-- **prod**: This profile is used for production deployment. It runs on port `8083`. You will need to provide the mail and password to work sending messages. Also specify a number of RabbitMQ settings
+- **prod**: This profile is used for production deployment. It runs on port `8081`. You will need to provide the mail and password to work sending messages. Also specify a number of RabbitMQ settings
+
 Here's an example configuration:
 
 ```yaml
